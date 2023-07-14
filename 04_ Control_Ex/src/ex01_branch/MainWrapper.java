@@ -71,28 +71,6 @@ public class MainWrapper {
     System.out.println(pass);
   }    
        
-  public static void ex032() {  
-    //점수와 학년에 따른 학점
-    //1~3학년 : 60점 이상 합격, 아니면 불합격
-    //4~6학년 : 70점 이상 합격, 아니면 불합격
-    int score = 60; // 점수
-    int scYear = 4;  // 학년
-    String pass;  // "합격", "불합격"   
-    int passScore; // 합격의 최소 점수 
-    if(scYear <= 3) {
-      passScore = 60;
-    } else {
-      passScore = 70;
-      
-    
-    if(score >= passScore) {
-       pass = "합격";
-    } else {
-      pass = "불합격";
-    
-  
-    }   
-    
     
     
     public static void ex04() { 
@@ -111,19 +89,79 @@ public class MainWrapper {
       
       }
       System.out.println("주문하신" + order + "은(는)" + price + "원입니다.");
-  
-   
-  }
+    }
+
+      
+      public static void ex06() {
+        // 월에 따른 분기      분기 계산 
+        // 1 ~ 3 : 1분기       (month - 1) /3 + 1
+        // 4 ~ 6 : 2분기
+        // 7 ~ 9 : 3분기
+        // 10 ~ 12 : 4분기
+        int month = 7;
+        if(month <= 3) {
+          System.out.println("1분기");
+        } else if(month <= 6) {
+          System.out.println("2분기");
+        } else if(month <= 9)  {
+          System.out.println("3분기");
+        } else {
+          System.out.println("4분기");
+        }
+      }
+      
+      public static void ex06_2() {
+        // 월에 따른 분기      분기 계산 
+        // 1 ~ 3 : 1분기       (month - 1) /3 + 1
+        // 4 ~ 6 : 2분기
+        // 7 ~ 9 : 3분기
+        // 10 ~ 12 : 4분기
+        int month = 7;
+        System.out.println((month - 1) /3 + 1 + "분기");
+      }
+      
+      public static void ex07() {
+        //10일 후 요일은?
+        int day = 14;  // 13일은 목요일
+        int nDay = 10;  // 10일
+        String weekname;  // "월", "화", "수", "목", "금", "토", "일"
+        switch((day += nDay) % 7) {
+          case 0 : weekname = "금"; break;
+          case 1 : weekname = "토"; break;
+          case 2 : weekname = "일"; break;
+          case 3 : weekname = "월"; break;
+          case 4 : weekname = "화"; break;
+          case 5 : weekname = "수"; break;
+          default : weekname = "목";
+        }
+        System.out.println(day + "일은" + weekname + "입니다.");
+      }
+      
+      public static void ex08() {
+        // 대소문자 변환 (구글링으로 아스키코드 검색 후 참고)
+        char ch = 't';  // 임의의 대문자 또는 소문자
+        if(ch >= 'A' && ch <= 'Z') {
+          ch += 32;  // ch = ch + 32
+        } else if (ch >= 'a' && ch <= 'z') {
+          ch -= 32; // ch = ch - 32;
+        }
+        System.out.println(ch);
+        
+      }
   public static void main(String[] args) {
     // TODO Auto-generated method stub
 
 
     
-    ex01();
-    ex02();
-    ex03();
-    ex032();
-    ex04();
+  //ex01();
+  //ex02();
+  //ex03();
+  //ex04();
+  //ex06();
+  //ex06_2();
+    ex07();
+    ex08();
+    
     
   }
 
