@@ -43,7 +43,7 @@ public class Customer {
     BreadChange bc = bakery.sell(count, money);
     
     // 구매 처리
-    if(hh != null) {
+    if(bc != null) {
       this.count += bc.getBread();  // 빵 3개 받기
       this.money -= money;          // 10000원 내고,
       this.money += bc.getChange(); // 4000원 받기
