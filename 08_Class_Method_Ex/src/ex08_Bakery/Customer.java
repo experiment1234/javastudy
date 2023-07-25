@@ -40,13 +40,13 @@ public class Customer {
     }
     
     // bakery에 count와 money를 전달하고 빵과 잔돈을 받는다.
-    BreadChange hh = bakery.sell(count, money);
+    BreadChange bc = bakery.sell(count, money);
     
     // 구매 처리
     if(hh != null) {
-      this.count += hh.getBread();  // 빵 3개 받기
+      this.count += bc.getBread();  // 빵 3개 받기
       this.money -= money;          // 10000원 내고,
-      this.money += hh.getChange(); // 4000원 받기
+      this.money += bc.getChange(); // 4000원 받기
     }
     
   }
