@@ -1,5 +1,6 @@
 package ex07_Object;
 
+
 public class MainWrapper {
 
   public static void ex01() {
