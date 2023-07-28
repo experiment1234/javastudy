@@ -3,6 +3,8 @@ package ex04_Map;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class MainWrapper {
@@ -24,38 +26,36 @@ public class MainWrapper {
   public static void ex01() {
     
     // Map 인터페이스 타입으로 Hashmap 선언 
-    
     Map<String, String> dict;
+   
     
     // HashMap 생성
-    dict = new HashMap<String, String>();
-    
+  dict = new HashMap<String, String>();
     // Entry 저장(Key, Value)
-    dict.put("봄", "spring");
-    dict.put("여름", "summer");
-    dict.put("가을", "autumn");
-    dict.put("겨울", "winter");
-    
+   dict.put("봄","spring");
+   dict.put("여름","spring");
+   dict.put("가을","spring");
+   dict.put("겨울","spring");
     //Value 확인(key를 전달한다)
-    System.out.println(dict.get("봄"));
-    System.out.println(dict.get("여름"));
-    System.out.println(dict.get("가을"));
-    System.out.println(dict.get("겨울"));
+   System.out.println(dict.get("봄"));
+   System.out.println(dict.get("여름"));
+   System.out.println(dict.get("가을"));
+   System.out.println(dict.get("겨울"));
     
   }
   
   public static void ex02() {
     
     //HashMap 선언 & 생성
-    Map<String, Object> person = new HashMap<String, Object>();
+   Map<String, Object> person = new HashMap<String, Object>();
     
     //Entry 저장(Key는 변수명으로, Value는 변수값으로 저장)
-   person.put("name", "홍길동"); 
-   person.put("age", 30);
+ person.put("name", "홍길동");
+ person.put("age", 30);
    
    // Value확인
-   System.out.println(person.get("name"));
-   System.out.println(person.get("age"));
+ System.out.println(person.get("name"));
+ System.out.println(person.get("age"));
    
    //Entry 수정(기존의 key를 사용하면 해당 key의 value가 수정되는 방식)
    person.put("name", "제시카");
@@ -64,13 +64,13 @@ public class MainWrapper {
   
   public static void ex03() {
     //HashMap 선언 & 생성
-    Map<String,Object> map = new HashMap<String,Object>();
+    Map<String, Object> map = new HashMap<String, Object>();
     
     //Entry저장
-    map.put("top", 10);
-    map.put("bottom", 20);
-    map.put("left", 30);
-    map.put("right", 40);
+   map.put("top", 10); 
+   map.put("bottom", 10); 
+   map.put("left", 10); 
+   map.put("right", 10); 
     
     // 반복자(Iterator)를 이용한 순회
     //1. Key만 꺼내서 Set에 저장한다.(keySet 메소드)
@@ -78,18 +78,35 @@ public class MainWrapper {
     //3. get() 메소드에 Key를 전달하면 Value가 나온다. 
     
     Set<String> keySet = map.keySet();
-    Iterator<String> arm = keySet.iterator();
+    Iterator<String> arm= keySet.iterator();
     while(arm.hasNext()) {
       String key = arm.next();
-      Object value = map.get(key);
+    }
+  }
+  
+  public static void ex04() {
+    
+    //HashMap 선언 & 생성
+    Map<String, Object> map = new HashMap<String, Object>();
+    
+    //Entry 추가 
+    map.put("id", "admin");
+    map.put("pw", "1234");
+    map.put("role", "DBA");
+    
+    // 향상 for 문 순환( Entry 단위로 값을 빼는 entrySet() 메소드 활용)
+    for(Entry<String, Object> entry : map.entrySet()) {
+      String key = entry.getKey();
+      Object value = entry.getValue();
       System.out.println(key + ": " + value);
     }
   }
   public static void main(String[] args) {
    
   //ex01();
-   // ex02();
-    ex03();
+    ex02();
+    //ex03();
+    //ex04();
   
   
   }

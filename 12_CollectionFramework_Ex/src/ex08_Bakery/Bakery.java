@@ -1,11 +1,14 @@
 package ex08_Bakery;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // 1가지 빵만 파는 빵집
 
 public class Bakery {
 
  
-  public final int PRICE = 2000;  // 빵이 얼마인가?
+ public final int PRICE = 2000;  // 빵이 얼마인가?
   
   private int count;  // 빵이 몇 개 있는가?
   private int money;  // 빵집에 돈이 얼마 있는가?
@@ -35,11 +38,17 @@ public class Bakery {
    * @param money 빵을 사려고 내는 돈
    * @return 빵과 잔돈
    */
-  public BreadChange sell(int count, int money) {
+  public Map<String, Integer> sell(int count, int money) {
     
     // 빵이 부족하다.
     if(this.count < count) {
       System.out.println("판매 불가합니다.(빵이 부족하다.)");
+      return null;
+    }
+    
+    // 잔돈이 부족하다.
+    if(this.money < money - count * PRICE) {
+      System.out.println("판매 불가합니다.(잔돈이 부족하다.)");
       return null;
     }
     
@@ -59,11 +68,13 @@ public class Bakery {
     this.count -= count;
     this.money += count * PRICE;
     
-    // 고객에게 반환할 BreadChange 객체 생성
-    BreadChange bc = new BreadChange(count, money - count * PRICE);
-    
+    // 고객에게 반환할 Map 생성
+    Map<String, Integer> map = new HashMap<String, Integer>();
+    map.put("bread", count);
+    map.put("change", money - count * PRICE);
+
     // 고객에게 빵과 잔돈 반환
-    return bc;
+    return map;
     
   }
   

@@ -50,6 +50,7 @@ package ex03_Set;
       // for문 활용하기 (인덱스가 없으므로 향상 for문)
       for(String hobby : hobbies) {
         System.out.println(hobby);
+       
       }
       
     }

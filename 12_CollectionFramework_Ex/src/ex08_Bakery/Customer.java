@@ -1,5 +1,7 @@
 package ex08_Bakery;
 
+import java.util.Map;
+
 public class Customer {
 
   private int count;  // 빵을 몇 개 샀는가?
@@ -40,13 +42,13 @@ public class Customer {
     }
     
     // bakery에 count와 money를 전달하고 빵과 잔돈을 받는다.
-    BreadChange bc = bakery.sell(count, money);
+    Map<String, Integer> map = bakery.sell(count, money);
     
     // 구매 처리
-    if(bc != null) {
-      this.count += bc.getBread();  // 빵 3개 받기
+    if(map != null) {
+      this.count += map.get("bread");  // 빵 3개 받기
       this.money -= money;          // 10000원 내고,
-      this.money += bc.getChange(); // 4000원 받기
+      this.money += map.get("change"); // 4000원 받기
     }
     
   }
