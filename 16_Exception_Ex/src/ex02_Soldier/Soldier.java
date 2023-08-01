@@ -1,4 +1,4 @@
-package ex03_Soldier;
+package ex02_Soldier;
 
 public class Soldier {
 

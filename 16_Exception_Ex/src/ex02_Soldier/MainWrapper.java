@@ -1,8 +1,8 @@
-package ex03_Soldier;
+package ex02_Soldier;
 
 public class MainWrapper {
 
- public static void main(String[] args) {
+ public static void main(String[] args) throws RuntimeException {
     
     Gun gun = new Gun(30);       // 총알을 30개 가진 총
     Soldier s = new Soldier(gun);// 총을 가진 군인
