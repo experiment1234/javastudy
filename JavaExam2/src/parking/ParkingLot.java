@@ -15,106 +15,66 @@ public class ParkingLot {
     this.name = name;
   }
   
-  
   public void addCar() {
-    System.out.println("*** 1. 추가하기 ***");
-    
     int size = cars.size();
-    
-    
-    
-    if(cars.size() < MAX){
-    System.out.println("현재 등록된 차량: " + cars.size() + "대"); 
-    
-    } else {
-    System.out.println("현재 등록된 차량: " + cars.size() + "대");
-    System.out.println("만차입니다. 더 이상 차량 등록이 불가능합니다.");
-    return;
+    System.out.println("현재 등록된 차량 : " + size + "대");
+    if(size == MAX) {
+      System.out.println("만차입니다. 더 이상 차량 등록이 불가능합니다.");
+      return;
     }
-    
-    
-    System.out.println("차량번호 입력 >>>");
+    System.out.print("차량번호 입력 >>> ");
     String carNo = sc.next();
-    
-    System.out.println("모델 입력 >>>");
+    System.out.print("모델 입력 >>> ");
     String model = sc.next();
-    
     cars.add(new Car(carNo, model));
     System.out.println("차량번호 " + carNo + " 차량이 등록되었습니다.");
-      
-  
-  
-    if(cars.isEmpty()) {
-      System.out.println("현재 주차장에 등록된 차량이 없습니다.");
-    }
-    }
-    
-    
-    
-  
+  }
   
   public void deleteCar() {
     if(cars.isEmpty()) {
       System.out.println("현재 주차장에 등록된 차량이 없습니다.");
+      return;
     }
-     
-    
-    System.out.println("*** 2. 삭제하기 ***");
-    System.out.println("삭제할 차량번호 입력 >>>");
-     String carNo = sc.next();
-     
-    
-    
-    
-  
-   
-    
-   
-    for(Car car : cars) {
-      if(carNo.equals(car.getCarNo())){
-        cars.remove(car);
-        System.out.println("차량번호 " + carNo + "차량이 삭제되었습니다.");
+    System.out.print("삭제할 차량번호 입력 >>> ");
+    String carNo = sc.next();
+    for(int i = 0, size = cars.size(); i < size; i++) {
+      if(cars.get(i).getCarNo().equals(carNo)) {
+        cars.remove(i);
+        System.out.println("차량번호 " + carNo + " 차량이 삭제되었습니다.");
         return;
       }
-    } System.out.println( "차량번호 " + carNo + "차량이 존재하지 않습니다.");
-   
-   
+    }
+    System.out.println("차량번호 " + carNo + " 차량이 존재하지 않습니다.");
   }
   
   public void searchCar() {
-   System.out.println("*** 3. 조회하기 ***");
-   if(cars.isEmpty()) {
-     System.out.println("현재 주차장에 등록된 차량이 없습니다.");
-   }
-   System.out.println("조회할 챠량 번호 입력 >>> ");
-   String carNo = sc.next();
-  
-   for(Car car : cars) {
-     if(carNo.equals(car.getCarNo())) {
-       System.out.println("조회결과 " + car);
-       return;
-     }
-   }
-   System.out.println("차량번호 " + carNo + "차량이 존재하지 않습니다.");
-   
+    if(cars.isEmpty()) {
+      System.out.println("현재 주차장에 등록된 차량이 없습니다.");
+      return;
+    }
+    System.out.print("조회할 차량번호 입력 >>> ");
+    String carNo = sc.next();
+    for(int i = 0, size = cars.size(); i < size; i++) {
+      if(cars.get(i).getCarNo().equals(carNo)) {
+        System.out.println("조회 결과: " + cars.get(i));
+        return;
+      }
+    }
+    System.out.println("차량번호 " + carNo + " 차량이 존재하지 않습니다.");
   }
   
   public void printAllCars() {
-    System.out.println("*** 4. 전체조회하기 ***");
     if(cars.isEmpty()) {
       System.out.println("현재 주차장에 등록된 차량이 없습니다.");
-     return;
-    } 
-    int size = cars.size();
-    System.out.println("대박주차장 차량 목록");
-    
-    for(int i = 0; i < size; i++) {
-      if(i < size -1) {
-      System.out.println((i+1) +"번째 차량:" +  cars.get(i));
-      } else {
-      System.out.println((i+1) +"번째 차량:" + " 없음.");
-     
+      return;
     }
+    System.out.println(name + " 차량 목록");
+    for(int i = 0; i < MAX; i++) {
+      if(i < cars.size()) {
+        System.out.println((i + 1) + "번째 차량: " + cars.get(i));
+      } else {
+        System.out.println((i + 1) + "번째 차량: 없음");
+      }
     }
   }
   

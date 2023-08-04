@@ -80,7 +80,7 @@ public class MainWrapper {
     //디렉터리를 File객체로 만들기
     File dir = new File("C:/storage");
     if(dir.exists() == false) {
-      dir.mkdir();
+      dir.mkdirs();
     }
     
     // 파일을 File 객체로 만들기
@@ -96,13 +96,14 @@ public class MainWrapper {
       
       //출력할 데이터(파일로 보낼 데이터)
      String str1 = "Hello";
-     String str2 = " world";
+     String str2 = "world";
      
   
        
       
       //출력(파일로 데이터 보내기)
       bw.write(str1, 0, 4);
+      bw.newLine();
       bw.write(str2);
       
       
@@ -177,7 +178,7 @@ public class MainWrapper {
   }
   
   public static void main(String[] args) {
-   ex03();
+   ex02();
   }
 
 }
